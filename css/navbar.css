@@ -1,0 +1,214 @@
+/* nav.css - Style khusus untuk navbar */
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  padding: 8px 0;              
+  border-bottom: 2px solid transparent;  
+  transition: color 0.3s ease, border-color 0.3s ease;
+  display: inline-block;
+}
+
+nav ul li a:hover {
+  color: rgb(57, 57, 255);
+  border-color: rgb(57, 57, 255);
+}
+
+.menu-icon {
+  font-size: 26px;
+  display: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.dropdown-content li {
+  width: 100%;
+}
+
+.dropdown > a::after {
+  content: "▾";
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+
+.dropdown-content li a {
+  display: block;
+  padding: 0.3rem 1rem;
+  color: black;
+  font-weight: 500;
+  border-bottom: none;
+  line-height: 1.1;
+  font-size: 0.95rem;
+}
+
+.dropdown-content li a:hover {
+  color: rgb(57, 57, 255);
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== */
+/* MODERN MOBILE STYLES */
+/* ==================== */
+@media only screen and (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: white;
+    gap: 0;
+  }
+
+  nav ul.hidden {
+    display: none;
+  }
+
+  /* Modern dropdown styling for mobile */
+  .dropdown {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .dropdown > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    position: relative;
+  }
+
+  .dropdown > a::after {
+    content: "▾";
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown.open > a::after {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    display: none;
+    opacity: 1;
+    transform: none;
+    background-color: #f8f9fa;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-width: unset;
+    border-left: 4px solid #5c84f1;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .dropdown.open .dropdown-content {
+    display: flex;
+  }
+
+  .dropdown-content li a {
+    padding: 0.8rem 1.5rem 0.8rem 2rem;
+    border-bottom: 1px solid #e9ecef;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: #495057;
+  }
+
+  .dropdown-content li a:hover {
+    background-color: #e9ecef;
+    color: #5c84f1;
+    padding-left: 2.5rem;
+  }
+
+  .dropdown-content li:last-child a {
+    border-bottom: none;
+  }
+
+  nav ul li:not(.dropdown) {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  nav ul li:not(.dropdown) a {
+    display: block;
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
+
+  /* Animation for dropdown */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

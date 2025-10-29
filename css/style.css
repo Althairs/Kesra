@@ -1,0 +1,28 @@
+/* style.css - Style utama untuk halaman */
+*,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f4f4;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+ padding: 10rem 3rem; 
+}
+
+main .welcome-section{
+padding: 5rem 0; 
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  main {
+    padding: 10rem 1rem;
+  }
+}
