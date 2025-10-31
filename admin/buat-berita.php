@@ -39,6 +39,7 @@ if (isset($_GET['edit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $is_edit ? 'Edit Berita' : 'Buat Berita'; ?> - Bagian Kesra</title>
     <link rel="stylesheet" href="../css/dashboard-admin.css">
+    <link rel="shortcut icon" href="../img/kesra.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>

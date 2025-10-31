@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Bagian Kesra</title>
     <link rel="stylesheet" href="../css/dashboard-admin.css">
+    <link rel="shortcut icon" href="../img/kesra.png" type="image/x-icon">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">

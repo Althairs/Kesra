@@ -23,6 +23,7 @@ $total_berita = $count_row['total'];
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/berita.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="shortcut icon" href="img/kesra.png" type="image/x-icon">
     <!-- ADD AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>

@@ -20,6 +20,7 @@ $total_berita = $count_row['total'];
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/tugas-fungsi.css">
+    <link rel="shortcut icon" href="img/kesra.png" type="image/x-icon">
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>

@@ -28,6 +28,7 @@ $total_pages = ceil($total_berita / $limit);
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/berita.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="shortcut icon" href="img/kesra.png" type="image/x-icon">
 </head>
 <body>
     <?php include 'komponen/navbar.php'; ?>

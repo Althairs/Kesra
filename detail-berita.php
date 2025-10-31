@@ -42,6 +42,7 @@ $waktu = date('H:i', strtotime($berita['tanggal_dibuat']));
     <link rel="stylesheet" href="css/berita.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/detail-berita.css">
+    <link rel="shortcut icon" href="img/kesra.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
 </head>
 <body>

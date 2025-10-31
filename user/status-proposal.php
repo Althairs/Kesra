@@ -14,6 +14,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'user') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status Proposal - Bagian Kesra</title>
     <link rel="stylesheet" href="../css/dashboard-user.css">
+    <link rel="shortcut icon" href="../img/kesra.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
