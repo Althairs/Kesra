@@ -1,6 +1,6 @@
 <nav>
   <div class="logo">
-    <img src="img/html.png" alt="logo">
+    <img src="img/kesra.png" alt="logo">
   </div>
 
   <div id="menu-icon" class="menu-icon">
@@ -25,7 +25,7 @@
       </ul>
     </li>
     <li><a href="dokumentasi.php">Dokumentasi Kegiatan</a></li>
-    <li><a href="#">Kinerja Bagian Kesra</a></li>
+    <li><a href="Kinerja.php">Kinerja Bagian Kesra</a></li>
     <li><a href="kontak.php">Kontak</a></li>
     <li><a href="login.php">Login</a></li>
   </ul>

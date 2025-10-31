@@ -1,12 +1,13 @@
 /* Pelayanan Styles */
 :root {
-    --primary-color: #5c84f1;
-    --secondary-color: #6c757d;
-    --accent-color: #ff6b6b;
+    --primary-color: #10B981;
+    --secondary-color: #6B7280;
+    --accent-color: #059669;
     --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --success-color: #28a745;
-    --warning-color: #ffc107;
+    --dark-color: #1F2937;
+    --text-color: #1F2937;
+    --success-color: #059669;
+    --warning-color: #D97706;
     --transition: all 0.3s ease;
 }
 
@@ -15,11 +16,12 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    color: var(--text-color);
 }
 
 /* Hero Section */
 .hero-pelayanan {
-    background: linear-gradient(135deg, var(--primary-color), #4a6fdc);
+    background: linear-gradient(135deg, var(--primary-color), #059669);
     color: white;
     padding: 8rem 0 6rem;
     text-align: center;
@@ -38,6 +40,7 @@
     margin-bottom: 1rem;
     font-weight: 700;
     line-height: 1.2;
+    color: white;
 }
 
 .hero-content h2 {
@@ -45,6 +48,7 @@
     margin-bottom: 1.5rem;
     font-weight: 500;
     opacity: 0.9;
+    color: white;
 }
 
 .hero-location {
@@ -55,6 +59,7 @@
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     font-weight: 600;
+    color: white;
 }
 
 .hero-location i {
@@ -67,6 +72,7 @@
     max-width: 600px;
     margin: 0 auto 2.5rem;
     line-height: 1.6;
+    color: white;
 }
 
 .btn-login-hero {
@@ -129,7 +135,7 @@
 
 .section-header h2 {
     font-size: 2.5rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
     position: relative;
 }
@@ -173,6 +179,7 @@
     transition: var(--transition);
     border-top: 5px solid var(--primary-color);
     position: relative;
+    color: var(--text-color);
 }
 
 .step-card:hover {
@@ -200,7 +207,7 @@
 .step-icon {
     width: 80px;
     height: 80px;
-    background: rgba(92, 132, 241, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -212,7 +219,7 @@
 
 .step-card h3 {
     font-size: 1.3rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
     line-height: 1.4;
 }
@@ -234,7 +241,7 @@
 
 .cta-tata-cara h3 {
     font-size: 2rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
 }
 
@@ -267,12 +274,13 @@
 .btn-primary {
     background: var(--primary-color);
     color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
 
 .btn-primary:hover {
-    background: #4a6fdc;
+    background: #059669;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(92, 132, 241, 0.3);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 
 .btn-secondary {
@@ -308,6 +316,7 @@
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
+    color: var(--text-color);
 }
 
 .berita-card:hover {
@@ -345,7 +354,7 @@
 
 .berita-content h3 {
     font-size: 1.3rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
     line-height: 1.4;
 }
@@ -367,7 +376,7 @@
 }
 
 .berita-link:hover {
-    color: #4a6fdc;
+    color: #059669;
     gap: 0.75rem;
 }
 
@@ -402,6 +411,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
     border: 2px solid transparent;
+    color: var(--text-color);
 }
 
 .statistik-card:hover {
@@ -413,7 +423,7 @@
 .statistik-icon {
     width: 70px;
     height: 70px;
-    background: rgba(92, 132, 241, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -426,7 +436,7 @@
 .statistik-number {
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
@@ -455,6 +465,7 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     transition: var(--transition);
+    color: var(--text-color);
 }
 
 .faq-item:hover {
@@ -471,13 +482,13 @@
 }
 
 .faq-question:hover {
-    background: rgba(92, 132, 241, 0.05);
+    background: rgba(16, 185, 129, 0.05);
 }
 
 .faq-question h3 {
     margin: 0;
     font-size: 1.1rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     flex: 1;
 }
 
@@ -512,7 +523,7 @@
 /* Final CTA Section */
 .final-cta-section {
     padding: 5rem 0;
-    background: linear-gradient(135deg, var(--primary-color), #4a6fdc);
+    background: linear-gradient(135deg, var(--primary-color), #059669);
     color: white;
     text-align: center;
     width: 100%;
@@ -521,6 +532,7 @@
 .final-cta-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: white;
 }
 
 .final-cta-content p {
@@ -530,6 +542,7 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    color: white;
 }
 
 /* Container */

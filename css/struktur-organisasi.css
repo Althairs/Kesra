@@ -1,11 +1,12 @@
 /* Struktur Organisasi Styles */
 :root {
-    --primary-color: #5c84f1;
-    --secondary-color: #6c757d;
-    --accent-color: #ff6b6b;
+    --primary-color: #10B981;
+    --secondary-color: #6B7280;
+    --accent-color: #059669;
     --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --success-color: #28a745;
+    --dark-color: #1F2937;
+    --text-color: #1F2937;
+    --success-color: #059669;
     --transition: all 0.3s ease;
 }
 
@@ -14,11 +15,12 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    color: var(--text-color);
 }
 
 /* Hero Section - Full width */
 .hero-struktur {
-    background: linear-gradient(135deg, var(--primary-color), #4a6fdc);
+    background: linear-gradient(135deg, var(--primary-color), #059669);
     color: white;
     padding: 6rem 0 4rem;
     text-align: center;
@@ -36,6 +38,7 @@
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    color: white;
 }
 
 .hero-content p {
@@ -43,6 +46,7 @@
     opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
+    color: white;
 }
 
 .hero-decoration {
@@ -82,7 +86,7 @@
 
 .section-header h2 {
     font-size: 2.5rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
     position: relative;
 }
@@ -147,7 +151,7 @@
     cursor: pointer;
     transition: var(--transition);
     font-size: 0.9rem;
-    color: var(--dark-color);
+    color: var(--text-color);
 }
 
 .control-btn:hover {
@@ -158,7 +162,7 @@
 
 .zoom-level {
     font-weight: 600;
-    color: var(--dark-color);
+    color: var(--text-color);
     min-width: 50px;
     text-align: center;
 }
@@ -171,8 +175,8 @@
 }
 
 .download-btn:hover {
-    background: #218838;
-    border-color: #1e7e34;
+    background: #047857;
+    border-color: #047857;
 }
 
 .pdf-viewer {
@@ -204,6 +208,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
     border-top: 4px solid var(--primary-color);
+    color: var(--text-color);
 }
 
 .info-card:hover {
@@ -214,7 +219,7 @@
 .info-icon {
     width: 70px;
     height: 70px;
-    background: rgba(92, 132, 241, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -226,7 +231,7 @@
 
 .info-card h3 {
     font-size: 1.3rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
 }
 
@@ -259,6 +264,7 @@
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
+    color: var(--text-color);
 }
 
 .contact-item:hover {
@@ -274,7 +280,7 @@
 
 .contact-item h4 {
     font-size: 1.2rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 

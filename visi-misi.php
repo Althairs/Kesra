@@ -55,8 +55,9 @@ $total_berita = $count_row['total'];
                         <i class="ph ph-target"></i>
                     </div>
                     <div class="visi-content">
-                        <h3>Terwujudnya Masyarakat yang Sejahtera, Mandiri, dan Berkeadilan Sosial</h3>
-                        <p>Visi Bagian Kesejahteraan Rakyat adalah menciptakan masyarakat yang memiliki kualitas hidup tinggi, mampu berdiri sendiri secara ekonomi, dan mendapatkan hak-hak sosial secara merata melalui program-program pemberdayaan yang berkelanjutan dan berbasis kebutuhan masyarakat.</p>
+                        <h3>Kota Jasa</h3>
+                        <!-- <h3>Terwujudnya Masyarakat yang Sejahtera, Mandiri, dan Berkeadilan Sosial</h3> -->
+                        <!-- <p>Visi Bagian Kesejahteraan Rakyat adalah menciptakan masyarakat yang memiliki kualitas hidup tinggi, mampu berdiri sendiri secara ekonomi, dan mendapatkan hak-hak sosial secara merata melalui program-program pemberdayaan yang berkelanjutan dan berbasis kebutuhan masyarakat.</p> -->
                     </div>
                 </div>
             </div>
@@ -68,10 +69,16 @@ $total_berita = $count_row['total'];
                 <div class="section-header" data-aos="fade-up" data-aos-duration="800">
                     <h2>Misi Kami</h2>
                     <div class="section-divider"></div>
-                    <p>Untuk mewujudkan visi tersebut, Bagian Kesra memiliki beberapa misi utama:</p>
+                    <p>Bagian Kesra memiliki misi utama:</p>
                 </div>
                 <div class="misi-grid">
                     <div class="misi-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                        <div class="misi-icon" data-aos="flip-left" data-aos-delay="300">
+                            <i class="ph ph-hand-heart"></i>
+                        </div>
+                        <h3>Mewujudkan Masyarakat Kota Yang Religius Sejahtera Dan Mandiri</h3>
+                    </div>
+                    <!-- <div class="misi-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                         <div class="misi-icon" data-aos="flip-left" data-aos-delay="300">
                             <i class="ph ph-hand-heart"></i>
                         </div>
@@ -112,7 +119,7 @@ $total_berita = $count_row['total'];
                         </div>
                         <h3>Pengembangan Program Inovatif</h3>
                         <p>Mengembangkan program-program inovatif yang sesuai dengan kebutuhan masyarakat dan perkembangan zaman untuk meningkatkan efektivitas pelayanan.</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -132,7 +139,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-file-text"></i>
                         </div>
                         <h3>Pengajuan Proposal Bantuan Hibah</h3>
-                        <p>Ajukan proposal bantuan hibah masjid secara online melalui sistem yang mudah dan transparan.</p>
+                        <p>Ajukan proposal bantuan hibah masjid secara online melalui sistem yang mudah dan transparan.
+                        </p>
                         <a href="ajukan-proposal.php" class="layanan-btn">Ajukan Proposal</a>
                     </div>
 
@@ -141,7 +149,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-clipboard-text"></i>
                         </div>
                         <h3>Cek Status Proposal</h3>
-                        <p>Pantau status pengajuan proposal Anda secara real-time, apakah diterima, ditolak, atau dalam proses.</p>
+                        <p>Pantau status pengajuan proposal Anda secara real-time, apakah diterima, ditolak, atau dalam
+                            proses.</p>
                         <a href="status-proposal.php" class="layanan-btn">Cek Status</a>
                     </div>
 
@@ -150,7 +159,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-folders"></i>
                         </div>
                         <h3>Dokumentasi Kegiatan</h3>
-                        <p>Lihat dokumentasi lengkap berbagai kegiatan dan program yang telah dilaksanakan oleh Bagian Kesra.</p>
+                        <p>Lihat dokumentasi lengkap berbagai kegiatan dan program yang telah dilaksanakan oleh Bagian
+                            Kesra.</p>
                         <a href="dokumentasi.php" class="layanan-btn">Lihat Dokumentasi</a>
                     </div>
 
@@ -159,7 +169,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-chart-bar"></i>
                         </div>
                         <h3>Kinerja Bagian Kesra</h3>
-                        <p>Informasi tentang capaian kinerja, program yang telah dilaksanakan, dan laporan hasil kerja.</p>
+                        <p>Informasi tentang capaian kinerja, program yang telah dilaksanakan, dan laporan hasil kerja.
+                        </p>
                         <a href="kinerja.php" class="layanan-btn">Lihat Kinerja</a>
                     </div>
                 </div>
@@ -176,11 +187,13 @@ $total_berita = $count_row['total'];
                 <div class="nilai-container">
                     <div class="nilai-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
                         <h4>Integritas</h4>
-                        <p>Kami bekerja dengan jujur, transparan, dan bertanggung jawab dalam setiap tindakan dan pengambilan keputusan.</p>
+                        <p>Kami bekerja dengan jujur, transparan, dan bertanggung jawab dalam setiap tindakan dan
+                            pengambilan keputusan.</p>
                     </div>
                     <div class="nilai-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                         <h4>Profesionalisme</h4>
-                        <p>Kami memberikan pelayanan terbaik dengan kompetensi, etos kerja yang tinggi, dan standar pelayanan yang optimal.</p>
+                        <p>Kami memberikan pelayanan terbaik dengan kompetensi, etos kerja yang tinggi, dan standar
+                            pelayanan yang optimal.</p>
                     </div>
                     <div class="nilai-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
                         <h4>Empati</h4>
@@ -188,7 +201,8 @@ $total_berita = $count_row['total'];
                     </div>
                     <div class="nilai-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
                         <h4>Inovasi</h4>
-                        <p>Kami terus berupaya menemukan cara-cara baru dan kreatif untuk meningkatkan kesejahteraan masyarakat.</p>
+                        <p>Kami terus berupaya menemukan cara-cara baru dan kreatif untuk meningkatkan kesejahteraan
+                            masyarakat.</p>
                     </div>
                 </div>
             </div>
@@ -199,7 +213,8 @@ $total_berita = $count_row['total'];
             <div class="container">
                 <div class="cta-content" data-aos="fade-up" data-aos-duration="1000">
                     <h2>Bersama Membangun Kesejahteraan</h2>
-                    <p>Mari berkolaborasi untuk menciptakan masyarakat yang lebih sejahtera dan mandiri melalui program-program Bagian Kesra</p>
+                    <p>Mari berkolaborasi untuk menciptakan masyarakat yang lebih sejahtera dan mandiri melalui
+                        program-program Bagian Kesra</p>
                     <div class="cta-buttons">
                         <a href="ajukan-proposal.php" class="btn btn-primary">Ajukan Bantuan Hibah</a>
                         <a href="dokumentasi.php" class="btn btn-secondary">Lihat Kegiatan</a>
@@ -211,7 +226,7 @@ $total_berita = $count_row['total'];
     </main>
 
     <?php include 'komponen/footer.php'; ?>
-    
+
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/script.js"></script>

@@ -30,7 +30,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: black;
+  color: #1F2937;
   font-weight: 600;
   padding: 8px 0;              
   border-bottom: 2px solid transparent;  
@@ -39,14 +39,15 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: rgb(57, 57, 255);
-  border-color: rgb(57, 57, 255);
+  color: #10B981;
+  border-color: #10B981;
 }
 
 .menu-icon {
   font-size: 26px;
   display: none;
   cursor: pointer;
+  color: #1F2937;
 }
 
 .dropdown {
@@ -68,6 +69,7 @@ nav ul li a:hover {
   transition: opacity 0.2s ease, transform 0.2s ease;
   opacity: 0;
   transform: translateY(5px);
+  border-top: 3px solid #10B981;
 }
 
 .dropdown-content li {
@@ -78,20 +80,24 @@ nav ul li a:hover {
   content: "▾";
   margin-left: 5px;
   font-size: 0.9em;
+  color: #10B981;
 }
 
 .dropdown-content li a {
   display: block;
-  padding: 0.3rem 1rem;
-  color: black;
+  padding: 0.8rem 1rem;
+  color: #1F2937;
   font-weight: 500;
   border-bottom: none;
   line-height: 1.1;
   font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
 .dropdown-content li a:hover {
-  color: rgb(57, 57, 255);
+  color: #10B981;
+  background-color: rgba(16, 185, 129, 0.05);
+  padding-left: 1.5rem;
 }
 
 .dropdown:hover .dropdown-content {
@@ -112,6 +118,7 @@ nav ul li a:hover {
   .menu-icon {
     display: flex;
     align-items: center;
+    color: #1F2937;
   }
 
   nav ul {
@@ -139,12 +146,14 @@ nav ul li a:hover {
     padding: 1rem 1.5rem;
     width: 100%;
     position: relative;
+    color: #1F2937;
   }
 
   .dropdown > a::after {
     content: "▾";
     font-size: 1.2em;
     transition: transform 0.3s ease;
+    color: #10B981;
   }
 
   .dropdown.open > a::after {
@@ -163,7 +172,8 @@ nav ul li a:hover {
     margin: 0;
     width: 100%;
     min-width: unset;
-    border-left: 4px solid #5c84f1;
+    border-left: 4px solid #10B981;
+    border-top: none;
     animation: slideDown 0.3s ease-out;
   }
 
@@ -176,12 +186,12 @@ nav ul li a:hover {
     border-bottom: 1px solid #e9ecef;
     transition: all 0.2s ease;
     font-weight: 500;
-    color: #495057;
+    color: #1F2937;
   }
 
   .dropdown-content li a:hover {
-    background-color: #e9ecef;
-    color: #5c84f1;
+    background-color: rgba(16, 185, 129, 0.05);
+    color: #10B981;
     padding-left: 2.5rem;
   }
 
@@ -198,6 +208,12 @@ nav ul li a:hover {
     display: block;
     padding: 1rem 1.5rem;
     width: 100%;
+    color: #1F2937;
+  }
+
+  nav ul li:not(.dropdown) a:hover {
+    color: #10B981;
+    background-color: rgba(16, 185, 129, 0.05);
   }
 
   /* Animation for dropdown */
@@ -211,4 +227,10 @@ nav ul li a:hover {
       transform: translateY(0);
     }
   }
+}
+
+/* Active state for current page */
+nav ul li a.active {
+  color: #10B981;
+  border-color: #10B981;
 }

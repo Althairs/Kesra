@@ -1,11 +1,12 @@
 /* Tugas dan Fungsi Styles */
 :root {
-    --primary-color: #5c84f1;
-    --secondary-color: #6c757d;
-    --accent-color: #ff6b6b;
+    --primary-color: #10B981;
+    --secondary-color: #6B7280;
+    --accent-color: #059669;
     --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --success-color: #28a745;
+    --dark-color: #1F2937;
+    --text-color: #1F2937;
+    --success-color: #059669;
     --transition: all 0.3s ease;
 }
 
@@ -14,11 +15,12 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    color: var(--text-color);
 }
 
 /* Hero Section - Full width */
 .hero-tugas-fungsi {
-    background: linear-gradient(135deg, var(--primary-color), #4a6fdc);
+    background: linear-gradient(135deg, var(--primary-color), #059669);
     color: white;
     padding: 6rem 0 4rem;
     text-align: center;
@@ -36,6 +38,7 @@
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    color: white;
 }
 
 .hero-content p {
@@ -43,6 +46,7 @@
     opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
+    color: white;
 }
 
 .hero-decoration {
@@ -82,7 +86,7 @@
 
 .section-header h2 {
     font-size: 2.5rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
     position: relative;
 }
@@ -127,6 +131,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
     border-left: 4px solid var(--primary-color);
+    color: var(--text-color);
 }
 
 .content-card:hover {
@@ -137,7 +142,7 @@
 .card-icon {
     flex: 0 0 60px;
     height: 60px;
-    background: rgba(92, 132, 241, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -148,7 +153,7 @@
 
 .card-content h3 {
     font-size: 1.3rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 0.8rem;
 }
 
@@ -182,6 +187,7 @@
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    color: var(--text-color);
 }
 
 .fungsi-item::before {
@@ -191,7 +197,7 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(135deg, var(--primary-color), #4a6fdc);
+    background: linear-gradient(135deg, var(--primary-color), #059669);
 }
 
 .fungsi-item:hover {
@@ -202,7 +208,7 @@
 .fungsi-number {
     font-size: 3rem;
     font-weight: 800;
-    color: rgba(92, 132, 241, 0.1);
+    color: rgba(16, 185, 129, 0.1);
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -211,7 +217,7 @@
 
 .fungsi-item h3 {
     font-size: 1.3rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
     position: relative;
     z-index: 1;
@@ -250,6 +256,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    color: var(--text-color);
 }
 
 .layanan-card:hover {
@@ -260,7 +267,7 @@
 .layanan-icon {
     width: 80px;
     height: 80px;
-    background: rgba(92, 132, 241, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -272,7 +279,7 @@
 
 .layanan-card h3 {
     font-size: 1.3rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
 }
 
@@ -323,6 +330,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: var(--transition);
     border-top: 4px solid var(--primary-color);
+    color: var(--text-color);
 }
 
 .program-card:hover {
@@ -333,7 +341,7 @@
 .program-icon {
     width: 80px;
     height: 80px;
-    background: rgba(92, 132, 241, 0.1);
+    background: rgba(16, 185, 129, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -345,7 +353,7 @@
 
 .program-card h3 {
     font-size: 1.4rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1.5rem;
 }
 
@@ -374,7 +382,7 @@
 /* CTA Section - Full width background */
 .cta-section {
     padding: 4rem 0;
-    background: linear-gradient(135deg, var(--primary-color), #4a6fdc);
+    background: linear-gradient(135deg, var(--primary-color), #059669);
     color: white;
     text-align: center;
     width: 100%;
@@ -383,6 +391,7 @@
 .cta-content h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: white;
 }
 
 .cta-content p {
@@ -392,6 +401,7 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    color: white;
 }
 
 .cta-buttons {

@@ -58,8 +58,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-users-three"></i>
                         </div>
                         <div class="card-content">
-                            <h3>Pelayanan Kesejahteraan Sosial</h3>
-                            <p>Melaksanakan pelayanan kesejahteraan sosial kepada masyarakat termasuk bantuan sosial, rehabilitasi sosial, dan jaminan sosial bagi masyarakat kurang mampu.</p>
+                            <h3>Penyiapan Perumusan Kebijakan</h3>
+                            <p>Melaksanakan penyiapan perumusan kebijakan Daerah untuk mendukung pengembangan kesejahteraan masyarakat.</p>
                         </div>
                     </div>
 
@@ -68,8 +68,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-handshake"></i>
                         </div>
                         <div class="card-content">
-                            <h3>Pengelolaan Bantuan Hibah</h3>
-                            <p>Mengelola dan menyalurkan bantuan hibah untuk lembaga keagamaan, termasuk masjid, melalui proses proposal yang transparan dan akuntabel.</p>
+                            <h3>Pengkoordinasian Kebijakan</h3>
+                            <p>Melaksanakan pengoordinasian perumusan kebijakan Daerah dan pengoordinasian pelaksanaan tugas Perangkat Daerah.</p>
                         </div>
                     </div>
 
@@ -78,8 +78,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-chart-line-up"></i>
                         </div>
                         <div class="card-content">
-                            <h3>Pemberdayaan Masyarakat</h3>
-                            <p>Melaksanakan program pemberdayaan masyarakat melalui pelatihan keterampilan, pendampingan, dan pengembangan kapasitas masyarakat.</p>
+                            <h3>Pemantauan dan Evaluasi</h3>
+                            <p>Melaksanakan pemantauan dan evaluasi pelaksanaan kebijakan Daerah untuk memastikan efektivitas program.</p>
                         </div>
                     </div>
 
@@ -88,8 +88,8 @@ $total_berita = $count_row['total'];
                             <i class="ph ph-git-fork"></i>
                         </div>
                         <div class="card-content">
-                            <h3>Koordinasi Program Sosial</h3>
-                            <p>Mengkoordinasikan program kesejahteraan sosial dengan instansi terkait, lembaga masyarakat, dan stakeholders lainnya.</p>
+                            <h3>Pembinaan Administrasi</h3>
+                            <p>Pelaksanaan pembinaan administrasi di bidang bina mental, kesejahteraan sosial, serta pemberdayaan dan kesejahteraan masyarakat.</p>
                         </div>
                     </div>
                 </div>
@@ -108,38 +108,68 @@ $total_berita = $count_row['total'];
                 <div class="fungsi-grid">
                     <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
                         <div class="fungsi-number">01</div>
-                        <h3>Perencanaan Program</h3>
-                        <p>Menyusun perencanaan program kesejahteraan sosial berdasarkan analisis kebutuhan dan potensi masyarakat.</p>
+                        <h3>Pengkoordinasian Perencanaan Program</h3>
+                        <p>pengoordinasian perencanaan program kegiatan Bagian Kesejahteraan Rakyat.</p>
                     </div>
 
                     <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
                         <div class="fungsi-number">02</div>
-                        <h3>Pelaksanaan Kegiatan</h3>
-                        <p>Melaksanakan kegiatan operasional program kesejahteraan sosial sesuai dengan rencana yang telah ditetapkan.</p>
+                        <h3>Penyiapan Bahan Kebijakan</h3>
+                        <p>pengoordinasian dan penyiapan bahan perumusan kebijakan Daerah di bidang bina mental, kesejahteraan sosial, serta pemberdayaan dan kesejahteraan masyarakat.</p>
                     </div>
 
                     <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
                         <div class="fungsi-number">03</div>
-                        <h3>Verifikasi Proposal</h3>
-                        <p>Melakukan verifikasi dan validasi proposal bantuan hibah masjid serta proposal bantuan sosial lainnya.</p>
+                        <h3>Pengkoordinasian Pelaksanaan Kebijakan</h3>
+                        <p>pengoordinasian pelaksanaan kebijakan Daerah di bidang bina mental, kesejahteraan sosial, serta pemberdayaan dan kesejahteraan masyarakat.</p>
                     </div>
 
                     <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
                         <div class="fungsi-number">04</div>
-                        <h3>Monitoring & Evaluasi</h3>
-                        <p>Melakukan pemantauan dan evaluasi terhadap pelaksanaan program untuk memastikan efektivitas dan efisiensi.</p>
+                        <h3>Pengkoordinasian Tugas Perangkat Daerah</h3>
+                        <p>pengoordinasian pelaksanaan tugas Perangkat Daerah di bidang bina mental, kesejahteraan sosial, serta pemberdayaan dan kesejahteraan masyarakat.</p>
                     </div>
 
                     <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
                         <div class="fungsi-number">05</div>
-                        <h3>Pelaporan & Akuntabilitas</h3>
-                        <p>Menyusun laporan pertanggungjawaban program dan menjaga akuntabilitas penggunaan anggaran.</p>
+                        <h3>Pemantauan dan Evaluasi</h3>
+                        <p>pemantauan dan evaluasi pelaksanaan kebijakan di bidang bina mental, kesejahteraan sosial, serta pemberdayaan dan kesejahteraan masyarakat.</p>
                     </div>
 
                     <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="600">
                         <div class="fungsi-number">06</div>
-                        <h3>Dokumentasi Kegiatan</h3>
-                        <p>Mendokumentasikan seluruh kegiatan dan program yang dilaksanakan sebagai bahan evaluasi dan laporan.</p>
+                        <h3>Pengkoordinasian Reformasi Birokrasi</h3>
+                        <p>pengoordinasian pelaksanaan reformasi birokrasi, inovasi, sistem pengendalian internal pemerintah, zona integritas, ketatalaksanaan, dan budaya pemerintahan pada Bagian Kesejahteraan Rakyat.</p>
+                    </div>
+
+                    <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="700">
+                        <div class="fungsi-number">07</div>
+                        <h3>Pengelolaan Kearsipan</h3>
+                        <p>pengoordinasian pengelolaan kearsipan dan perpustakaan Bagian Kesejahteraan Rakyat.</p>
+                    </div>
+
+                    <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="800">
+                        <div class="fungsi-number">08</div>
+                        <h3>Pengkoordinasian Evaluasi dan Laporan</h3>
+                        <p>pengoordinasian pelaksanaan pemantauan, pengendalian, evaluasi, dan penyusunan laporan Bagian Kesejahteraan Rakyat.</p>
+                    </div>
+
+                    <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="900">
+                        <div class="fungsi-number">09</div>
+                        <h3>Pembinaan Jabatan Fungsional</h3>
+                        <p>pembinaan dan pengoordinasian fasilitasi kelompok jabatan fungsional pada Bagian Kesejahteraan Rakyat.</p>
+                    </div>
+
+                    <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="1000">
+                        <div class="fungsi-number">10</div>
+                        <h3>Tindak Lanjut Pemeriksaan</h3>
+                        <p>pengoordinasian pelaksanaan tindak lanjut laporan hasil pemeriksaan pada Bagian Kesejahteraan Rakyat.</p>
+                    </div>
+
+                    <div class="fungsi-item" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="1100">
+                        <div class="fungsi-number">11</div>
+                        <h3>Administrasi Umum</h3>
+                        <p>pengoordinasian penyelenggaraan kegiatan administrasi umum, kepegawaian, perencanaan, evaluasi, pelaporan, keuangan, dan aset Bagian Kesejahteraan Rakyat.</p>
                     </div>
                 </div>
             </div>

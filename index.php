@@ -1,17 +1,15 @@
 <?php
 include 'koneksi.php';
 
-$query = "SELECT * FROM berita ORDER BY tanggal_dibuat DESC LIMIT 6";
+// Query untuk mengambil 6 berita terbaru dengan status publish
+$query = "SELECT * FROM berita WHERE status_berita = 'publish' ORDER BY tanggal_dibuat DESC LIMIT 6";
 $result = mysqli_query($koneksi, $query);
 
-
-$count_query = "SELECT COUNT(*) as total FROM berita";
+// Query untuk menghitung total berita yang publish
+$count_query = "SELECT COUNT(*) as total FROM berita WHERE status_berita = 'publish'";
 $count_result = mysqli_query($koneksi, $count_query);
 $count_row = mysqli_fetch_assoc($count_result);
 $total_berita = $count_row['total'];
-
-
-// mysqli_close($koneksi);
 ?>
 
 <!DOCTYPE html>
@@ -25,31 +23,26 @@ $total_berita = $count_row['total'];
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/berita.css">
     <link rel="stylesheet" href="css/footer.css">
+    <!-- ADD AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
 </head>
 
-<div style="background: #f8f9fa; padding: 10px; margin: 10px; border-radius: 5px;">
-    <small>Debug Info - IP: <?php echo $_SERVER['REMOTE_ADDR']; ?> | Host: <?php echo $_SERVER['HTTP_HOST']; ?></small>
-</div>
 <body>
     <?php include 'komponen/navbar.php'; ?>
 
     <main>
+        
         <div class="welcome-section">
             <h1 id="welcome-text"></h1>
-            <!-- <p>
-                Selamat datang di website profil Bagian Kesejahteraan Rakyat (Kesra).
-                Di sini Anda bisa membaca profil, mengajukan bantuan hibah masjid, melihat
-                dokumentasi kegiatan, dan memantau kinerja program.
-            </p> -->
         </div>
 
         <section class="berita-section">
             <h2>Berita Terbaru</h2>
 
-            <div class="berita-container">
+            <!-- MODIFIED: Added center class and AOS attributes -->
+            <div class="berita-container center">
                 <?php
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -58,18 +51,24 @@ $total_berita = $count_row['total'];
                         $deskripsi = $row['deskripsi_berita'];
                         $gambar = $row['gambar_berita'];
                         $tanggal = $row['tanggal_dibuat'];
+                        $kategori = $row['kategori_berita'];
 
                         $tanggal_format = date('d F Y', strtotime($tanggal));
 
+                        // Ambil gambar pertama sebagai sampul
                         $arr_gambar = explode(',', $gambar);
                         $gambar_utama = !empty($arr_gambar[0]) ? $arr_gambar[0] : 'default.jpg';
                         ?>
-                        <div class="berita-card">
+                        <!-- ADDED: AOS animation -->
+                        <div class="berita-card" data-aos="fade-up" data-aos-duration="800">
                             <div class="berita-gambar">
                                 <img src="img/berita/<?php echo $gambar_utama; ?>" alt="<?php echo $judul; ?>"
                                     onerror="this.src='img/berita/default.jpg'">
                                 <?php if (count($arr_gambar) > 1): ?>
                                     <span class="jumlah-gambar">+<?php echo count($arr_gambar) - 1; ?> gambar</span>
+                                <?php endif; ?>
+                                <?php if (!empty($kategori)): ?>
+                                    <span class="kategori-badge"><?php echo ucfirst($kategori); ?></span>
                                 <?php endif; ?>
                             </div>
 
@@ -77,8 +76,7 @@ $total_berita = $count_row['total'];
                                 <h3><?php echo htmlspecialchars($judul); ?></h3>
                                 <p class="berita-tanggal"><?php echo $tanggal_format; ?></p>
                                 <p class="berita-deskripsi"><?php echo substr(htmlspecialchars($deskripsi), 0, 150); ?>...</p>
-                                <a href="detail_berita.php?id=<?php echo $id_berita; ?>" class="btn-detail">Baca
-                                    Selengkapnya</a>
+                                <a href="detail-berita.php?id=<?php echo $id_berita; ?>" class="btn-detail">Baca Selengkapnya</a>
                             </div>
                         </div>
                         <?php
@@ -99,42 +97,23 @@ $total_berita = $count_row['total'];
 
     <?php include'komponen/footer.php';?>
     
+    <!-- ADD AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/script.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init();
+        
         var typed = new Typed("#welcome-text", {
-            strings: ["Selamat Datang Di Website Profil Bagian Kesejahteraan Rakyat (Kesra)."],
+            strings: ["Selamat Datang Di Website Profil Bagian Kesejahteraan Rakyat (Kesra)"],
             typeSpeed: 40,
-            // backSpeed: 40,
             loop: false
         });
     </script>
-
-    <!-- <script>
-    const text = "Selamat datang di website profil Bagian Kesejahteraan Rakyat";
-    const element = document.getElementById("welcome-text");
-    let index = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-      if (!isDeleting && index <= text.length) {
-        element.textContent = text.slice(0, index++);
-        setTimeout(typeEffect, 100);
-      } else if (isDeleting && index >= 0) {
-        element.textContent = text.slice(0, index--);
-        setTimeout(typeEffect, 50);
-      } else {
-        isDeleting = !isDeleting;
-        setTimeout(typeEffect, 1000);
-      }
-    }
-
-    typeEffect();
-  </script> -->
 </body>
 
 </html>
 <?php
-
 if (isset($koneksi)) {
     mysqli_close($koneksi);
 }

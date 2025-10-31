@@ -10,7 +10,7 @@ $result = mysqli_query($koneksi, $query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pelayanan Kesra - Kabupaten Gorontalo</title>
+    <title>Pelayanan Kesra - Kota Gorontalo</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -33,7 +33,7 @@ $result = mysqli_query($koneksi, $query);
                     <h2>Sistem Pelayanan Bagian Kesra</h2>
                     <div class="hero-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>KABUPATEN GORONTALO</span>
+                        <span>Kota GORONTALO</span>
                     </div>
                     <p>Layanan pengajuan bantuan hibah masjid secara online yang cepat, transparan, dan akuntabel</p>
                     <a href="login.php" class="btn-login-hero">
@@ -112,7 +112,7 @@ $result = mysqli_query($koneksi, $query);
                 <div class="section-header" data-aos="fade-up" data-aos-duration="800">
                     <h2>Berita Informasi</h2>
                     <div class="section-divider"></div>
-                    <p>Informasi terbaru seputar kegiatan dan program Bagian Kesra Kabupaten Gorontalo</p>
+                    <p>Informasi terbaru seputar kegiatan dan program Bagian Kesra Kota Gorontalo</p>
                 </div>
 
                 <div class="berita-grid">
@@ -136,7 +136,7 @@ $result = mysqli_query($koneksi, $query);
                                     <span class="berita-date"><?php echo $tanggal; ?></span>
                                     <h3><?php echo htmlspecialchars($judul); ?></h3>
                                     <p><?php echo substr(htmlspecialchars($deskripsi), 0, 120); ?>...</p>
-                                    <a href="detail_berita.php?id=<?php echo $row['id_berita']; ?>" class="berita-link">Baca Selengkapnya</a>
+                                    <a href="detail-berita.php?id=<?php echo $row['id_berita']; ?>" class="berita-link">Baca Selengkapnya</a>
                                 </div>
                             </div>
                             <?php
