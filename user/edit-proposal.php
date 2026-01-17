@@ -1,8 +1,42 @@
 <?php
 session_start();
+require_once '../koneksi.php';
+
 // Cek apakah user sudah login
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'user') {
     header('Location: ../login.php');
+    exit();
+}
+
+// Ambil data proposal yang akan diedit
+$proposal = null;
+if (isset($_GET['id'])) {
+    $id_proposal = $_GET['id'];
+    $id_user = $_SESSION['user_id'];
+    
+    $query = "SELECT * FROM proposals WHERE id = ? AND id_user = ?";
+    $stmt = mysqli_prepare($koneksi, $query);
+    mysqli_stmt_bind_param($stmt, "ii", $id_proposal, $id_user);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    
+    if (mysqli_num_rows($result) > 0) {
+        $proposal = mysqli_fetch_assoc($result);
+        
+        // Cek apakah proposal bisa diedit (hanya status pending)
+        if ($proposal['status'] !== 'pending') {
+            $_SESSION['error_messages'] = ['Hanya proposal dengan status Menunggu yang dapat diedit'];
+            header('Location: status-proposal.php');
+            exit();
+        }
+    } else {
+        $_SESSION['error_messages'] = ['Proposal tidak ditemukan!'];
+        header('Location: status-proposal.php');
+        exit();
+    }
+    mysqli_stmt_close($stmt);
+} else {
+    header('Location: status-proposal.php');
     exit();
 }
 
@@ -10,18 +44,25 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'user') {
 $form_data = $_SESSION['form_data'] ?? [];
 unset($_SESSION['form_data']);
 
-// Debug info
-error_log("=== AJUKAN PROPOSAL PAGE ACCESSED ===");
-error_log("User: " . $_SESSION['user_id']);
-error_log("Form data: " . print_r($form_data, true));
+// Jika ada form data dari session, gunakan itu. Jika tidak, gunakan data dari database
+if (empty($form_data)) {
+    $form_data = [
+        'nama_lembaga' => $proposal['nama_lembaga'],
+        'alamat' => $proposal['alamat'],
+        'jenis_bantuan' => $proposal['jenis_bantuan'],
+        'jumlah_diajukan' => $proposal['jumlah_diajukan'],
+        'deskripsi' => $proposal['deskripsi'],
+        'bank' => $proposal['bank'],
+        'nomor_rekening' => $proposal['nomor_rekening']
+    ];
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajukan Proposal - Bagian Kesra</title>
+    <title>Edit Proposal - Bagian Kesra</title>
     <link rel="stylesheet" href="../css/dashboard-user.css">
     <link rel="shortcut icon" href="../img/kesra.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -74,17 +115,15 @@ error_log("Form data: " . print_r($form_data, true));
             border-color: #ef4444;
             color: #7f1d1d;
         }
-        .debug-info {
-            background: #f3f4f6;
-            padding: 1rem;
-            margin: 1rem 0;
+        .current-file {
+            background: #d1fae5;
+            padding: 0.5rem;
             border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            border: 1px solid #10b981;
         }
     </style>
 </head>
-
 <body>
     <div class="dashboard-container">
         <!-- Sidebar -->
@@ -98,7 +137,7 @@ error_log("Form data: " . print_r($form_data, true));
                     <button class="mobile-toggle" id="mobileToggle">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <h1>Ajukan Proposal</h1>
+                    <h1>Edit Proposal</h1>
                 </div>
                 <div class="header-right">
                     <div class="user-info">
@@ -110,14 +149,6 @@ error_log("Form data: " . print_r($form_data, true));
 
             <!-- Content Area -->
             <div class="content-area">
-                <!-- Debug Info (bisa dihapus setelah fix) -->
-                <div class="debug-info" style="display: none;">
-                    <strong>Debug Info:</strong><br>
-                    User ID: <?php echo $_SESSION['user_id']; ?><br>
-                    Role: <?php echo $_SESSION['role']; ?><br>
-                    Form Data: <?php echo json_encode($form_data); ?>
-                </div>
-
                 <!-- Tampilkan pesan error jika ada -->
                 <?php if (isset($_SESSION['error_messages'])): ?>
                     <div class="alert alert-error">
@@ -137,27 +168,13 @@ error_log("Form data: " . print_r($form_data, true));
                     <?php unset($_SESSION['error_messages']); ?>
                 <?php endif; ?>
 
-                <!-- Tampilkan pesan sukses jika ada -->
-                <?php if (isset($_SESSION['success_message'])): ?>
-                    <div class="alert alert-success">
-                        <div class="alert-content">
-                            <i class="fas fa-check-circle"></i>
-                            <span style="flex: 1;"><?php echo htmlspecialchars($_SESSION['success_message']); ?></span>
-                            <button class="alert-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
-                        </div>
-                    </div>
-                    <?php unset($_SESSION['success_message']); ?>
-                <?php endif; ?>
-
                 <div class="section-header">
-                    <h2>Ajukan Proposal Bantuan</h2>
-                    <p>Isi form berikut untuk mengajukan proposal hibah keagamaan</p>
+                    <h2>Edit Proposal Bantuan</h2>
+                    <p>Perbarui data proposal Anda</p>
                 </div>
 
-                <!-- PERBAIKAN: Pastikan form action dan method benar -->
-                <form class="proposal-form" action="../controller/pengajuan-controller.php" method="POST" enctype="multipart/form-data" id="proposalForm">
-                    <!-- Hidden field untuk memastikan form terdeteksi -->
-                    <input type="hidden" name="form_type" value="proposal_submission">
+                <form class="proposal-form" action="../controller/pengajuan-controller.php?action=edit" method="POST" enctype="multipart/form-data" id="proposalForm">
+                    <input type="hidden" name="proposal_id" value="<?php echo $proposal['id']; ?>">
                     
                     <div class="form-group">
                         <label for="nama-lembaga" class="required">Nama Lembaga</label>
@@ -210,9 +227,21 @@ error_log("Form data: " . print_r($form_data, true));
                     </div>
 
                     <div class="form-group">
-                        <label for="dokumen">Upload Dokumen Pendukung</label>
+                        <label for="dokumen">Upload Dokumen Pendukung Baru</label>
                         <input type="file" id="dokumen" name="dokumen" accept=".pdf,.doc,.docx,.jpg,.png">
-                        <small>Format: PDF, DOC, DOCX, JPG, PNG (Maks. 5MB)</small>
+                        <small>Format: PDF, DOC, DOCX, JPG, PNG (Maks. 5MB). Kosongkan jika tidak ingin mengubah file.</small>
+                        
+                        <!-- Tampilkan file saat ini -->
+                        <?php if (!empty($proposal['dokumen'])): ?>
+                            <div class="current-file">
+                                <i class="fas fa-file"></i> 
+                                <strong>File Saat Ini:</strong> 
+                                <a href="../<?php echo $proposal['dokumen']; ?>" target="_blank" style="margin-left: 0.5rem;">
+                                    <?php echo basename($proposal['dokumen']); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                        
                         <div id="file-preview"></div>
                     </div>
 
@@ -244,12 +273,11 @@ error_log("Form data: " . print_r($form_data, true));
                     </div>
 
                     <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                        <a href="status-proposal.php" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> Kembali
-                        </button>
-                        <!-- PERBAIKAN: Tombol submit dengan name yang jelas -->
-                        <button type="submit" name="ajukan_proposal" value="1" class="btn btn-primary" id="submitBtn">
-                            <i class="fas fa-paper-plane"></i> Ajukan Proposal
+                        </a>
+                        <button type="submit" name="update_proposal" value="1" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-save"></i> Perbarui Proposal
                         </button>
                     </div>
                 </form>
@@ -302,16 +330,10 @@ error_log("Form data: " . print_r($form_data, true));
                 // Tampilkan loading
                 const submitBtn = document.getElementById('submitBtn');
                 const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengajukan...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memperbarui...';
                 submitBtn.disabled = true;
                 
                 console.log('Form validation passed, submitting...');
-                
-                // Tambahkan delay kecil untuk memastikan loading terlihat
-                setTimeout(() => {
-                    // Biarkan form submit normal
-                    console.log('Form submission proceeding...');
-                }, 100);
             } else {
                 console.log('Form validation failed');
             }
@@ -396,22 +418,7 @@ error_log("Form data: " . print_r($form_data, true));
             e.target.value = value;
         });
         
-        console.log('Form initialization completed');
-        
-        // Debug: Log form submission
-        const form = document.getElementById('proposalForm');
-        form.addEventListener('submit', function() {
-            console.log('Form is being submitted...');
-            console.log('Form action:', this.action);
-            console.log('Form method:', this.method);
-            console.log('Form enctype:', this.enctype);
-            
-            // Log semua form data
-            const formData = new FormData(this);
-            for (let [key, value] of formData.entries()) {
-                console.log(`Form field: ${key} = ${value}`);
-            }
-        });
+        console.log('Edit form initialization completed');
     </script>
 </body>
 </html>

@@ -12,12 +12,15 @@ body{
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(90deg, #f0f9ff, #e6fffa);
+    padding: 20px;
 }
 
 .container{
     position: relative;
-    width: 850px;
-    height: 550px;
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    min-height: 550px;
     background: #fff;
     margin: 20px;
     border-radius: 30px;
@@ -260,67 +263,50 @@ form{
     pointer-events: none;
 }
 
-/* notif */
-/* notif */
-.notif-pesan {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    border-radius: 8px;
-    color: white;
-    font-weight: 500;
-    z-index: 1000;
-    animation: slideIn 0.3s ease;
-    max-width: 300px;
-}
+/* ==================== MEDIA QUERIES ==================== */
 
-.notif-pesan.succes {  /* PERBAIKI: 'succes' menjadi 'success' */
-    background: #10B981;
-}
-
-.notif-pesan.eror {    /* PERBAIKI: 'eror' menjadi 'error' */
-    background: #EF4444;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
+/* Tablet */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
     }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 900px) {
+    
     .container {
-        width: 90%;
         height: auto;
-        min-height: 600px;
+        min-height: auto;
+        margin: 0;
+        border-radius: 20px;
     }
     
     .form-box {
         position: relative;
         width: 100%;
-        padding: 30px;
+        height: auto;
+        padding: 30px 25px;
+        right: 0 !important;
+        visibility: visible !important;
     }
     
-    .container.active .form-box {
-        right: 0;
+    .form-box.register {
+        display: none;
+    }
+    
+    .container.active .form-box.login {
+        display: none;
+    }
+    
+    .container.active .form-box.register {
+        display: flex;
+    }
+    
+    /* TOGGLE BOX MOBILE - PERBAIKAN DI SINI */
+    .toggle-box {
+        position: relative;
+        height: auto;
+        background: linear-gradient(135deg, #10B981, #059669);
+        border-radius: 0 0 20px 20px;
+        display: block !important; /* Pastikan selalu tampil */
     }
     
     .toggle-box::before {
@@ -328,25 +314,140 @@ form{
     }
     
     .toggle-panel {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        margin: 10px;
-        border-radius: 20px;
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 25px;
+        text-align: center;
+        display: none; /* Sembunyikan semua dulu */
     }
     
-    .form-box {
-        padding: 20px;
+    /* Tampilkan hanya toggle-left saat form login aktif */
+    .toggle-panel.toggle-left {
+        display: flex;
+    }
+    
+    /* Tampilkan hanya toggle-right saat form register aktif */
+    .container.active .toggle-panel.toggle-left {
+        display: none;
+    }
+    
+    .container.active .toggle-panel.toggle-right {
+        display: flex;
+    }
+    
+    .toggle-panel.toggle-left,
+    .toggle-panel.toggle-right {
+        left: 0;
+        right: 0;
+        position: relative;
+    }
+    
+    .toggle-panel .btn {
+        width: 140px;
+        margin: 5px;
     }
     
     .container h1 {
         font-size: 28px;
     }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        border-radius: 15px;
+    }
+    
+    .form-box {
+        padding: 25px 20px;
+    }
+    
+    .container h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
     
     .input-box {
         margin: 20px 0;
+    }
+    
+    .input-box input,
+    .input-box select {
+        padding: 12px 45px 12px 15px;
+        font-size: 14px;
+    }
+    
+    .input-box i {
+        font-size: 18px;
+        right: 15px;
+    }
+    
+    .btn {
+        height: 44px;
+        font-size: 15px;
+    }
+    
+    .toggle-panel {
+        padding: 20px 15px;
+    }
+    
+    .toggle-panel h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    
+    .toggle-panel p {
+        font-size: 13px;
+        margin: 10px 0;
+    }
+    
+    .forgot-link a {
+        font-size: 13px;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 320px) {
+    .form-box {
+        padding: 20px 15px;
+    }
+    
+    .container h1 {
+        font-size: 22px;
+    }
+    
+    .toggle-panel {
+        padding: 15px 10px;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .container {
+        height: auto;
+        min-height: auto;
+    }
+    
+    .form-box {
+        padding: 20px 25px;
+    }
+    
+    .input-box {
+        margin: 15px 0;
+    }
+    
+    .toggle-panel {
+        padding: 15px;
     }
 }

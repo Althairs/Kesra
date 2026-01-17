@@ -27,12 +27,17 @@
     font-size: 0.7rem;
 }
 
+.berita-container{
+    margin: 0 15px;
+}
+
 /* Style untuk card berita */
 .berita-card {
     background: white;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* margin: 15px; */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -144,5 +149,9 @@ main .welcome-section {
     
     .berita-gambar img {
         height: 180px;
+    }
+
+    .container{
+        margin-top: 0px;
     }
 }

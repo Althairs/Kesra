@@ -1,0 +1,368 @@
+/* Kontak Styles */
+:root {
+    --primary-color: #10B981;
+    --secondary-color: #6B7280;
+    --accent-color: #059669;
+    --light-color: #f8f9fa;
+    --dark-color: #1F2937;
+    --text-color: #1F2937;
+    --success-color: #059669;
+    --transition: all 0.3s ease;
+}
+
+/* Main Structure - Full width after nav */
+.kontak-main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+/* Hero Section - Full width */
+.hero-kontak {
+    background: linear-gradient(135deg, var(--primary-color), #059669);
+    color: white;
+    padding: 6rem 0 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.hero-kontak .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    color: white;
+}
+
+.hero-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.decoration-circle:nth-child(1) {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    right: -50px;
+}
+
+.decoration-circle:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    bottom: -30px;
+    left: -30px;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+}
+
+.section-header p {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Kontak Section - Full width background */
+.kontak-section {
+    padding: 4rem 0;
+    background-color: white;
+    width: 100%;
+}
+
+.kontak-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.kontak-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary-color);
+    color: var(--text-color);
+}
+
+.kontak-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.kontak-icon {
+    flex: 0 0 70px;
+    height: 70px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.kontak-info h3 {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.kontak-info p {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Info Section - Full width background */
+.info-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    width: 100%;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+    border-top: 4px solid var(--primary-color);
+    color: var(--text-color);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.info-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.info-card h3 {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.info-card p {
+    color: var(--secondary-color);
+    line-height: 1.6;
+    margin: 0.5rem 0;
+}
+
+/* CTA Section - Full width background */
+.cta-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--primary-color), #059669);
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--primary-color);
+    border-color: white;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .kontak-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .kontak-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+        text-align: center;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-kontak {
+        padding: 5rem 0 3rem;
+    }
+    
+    .kontak-section,
+    .info-section,
+    .cta-section {
+        padding: 3rem 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+/* Smooth scrolling for better AOS experience */
+html {
+    scroll-behavior: smooth;
+}

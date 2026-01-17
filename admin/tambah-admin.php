@@ -1,10 +1,10 @@
 <?php
 session_start();
 // Cek apakah user sudah login dan role admin
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    header('Location: ../login.php');
-    exit();
-}
+// if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+//     header('Location: ../login.php');
+//     exit();
+// }
 
 // Tampilkan pesan sukses/error
 if (isset($_SESSION['success'])) {

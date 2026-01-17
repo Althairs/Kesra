@@ -17,3 +17,5 @@ dropdownLinks.forEach(link => {
     }
   });
 });
+
+console.log('data di muat');

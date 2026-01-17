@@ -28,6 +28,7 @@ $total_pages = ceil($total_berita / $limit);
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/berita.css">
     <link rel="stylesheet" href="css/footer.css">
+    <!-- <link rel="stylesheet" href="css/detail-berita.css"> -->
     <link rel="shortcut icon" href="img/kesra.png" type="image/x-icon">
 </head>
 <body>
@@ -35,7 +36,7 @@ $total_pages = ceil($total_berita / $limit);
 
     <main>
         <section class="berita-section">
-            <div class="container">
+            <div class="container" style="margin-top: 100px; text-align: center;">
                 <h1>Semua Berita</h1>
                 <p class="section-subtitle">Informasi terbaru dari Bagian Kesejahteraan Rakyat</p>
 
@@ -105,6 +106,7 @@ $total_pages = ceil($total_berita / $limit);
     </main>
 
     <?php include 'komponen/footer.php'; ?>
+    <script src="js/script.js"></script>
 </body>
 </html>
 

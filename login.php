@@ -41,9 +41,9 @@ include 'controller/login-controller.php';
                     </select>
                     <i class="fa-solid fa-user-tag"></i>
                 </div>
-                <div class="forgot-link">
+                <!-- <div class="forgot-link">
                     <a href="#">Lupa Kata Sandi?</a>
-                </div>
+                </div> -->
                 <button type="submit" name="login" class="btn">Masuk</button>
             </form>
         </div>

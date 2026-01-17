@@ -35,9 +35,20 @@ $total_berita = $count_row['total'];
 
     <main>
         
+       <!-- WELCOME SECTION -->
         <div class="welcome-section">
-            <h1 id="welcome-text"></h1>
+
+            <div class="welcome-left">
+                <img src="img/walkot.png" alt="Logo Kesra">
+            </div>
+
+            <div class="welcome-right">
+                <h1 id="welcome-text"></h1>
+            </div>
+
         </div>
+
+        
 
         <section class="berita-section">
             <h2>Berita Terbaru</h2>
@@ -106,8 +117,8 @@ $total_berita = $count_row['total'];
         AOS.init();
         
         var typed = new Typed("#welcome-text", {
-            strings: ["Selamat Datang Di Website Profil Bagian Kesejahteraan Rakyat (Kesra)"],
-            typeSpeed: 40,
+            strings: ["Selamat Datang Di Website Profil Bagian Kesejahteraan Rakyat (Kesra) <br> #Torang Beken Bae"],
+            typeSpeed: 20,
             loop: false
         });
     </script>

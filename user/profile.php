@@ -2,15 +2,15 @@
 session_start();
 require_once '../koneksi.php';
 
-// Cek apakah yang login admin
-// if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-//     header('Location: ../login.php');
-//     exit();
-// }
+// Cek apakah user sudah login
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'user') {
+    header('Location: ../login.php');
+    exit();
+}
 
-// Ambil data admin dari database
+// Ambil data user dari database
 $user_id = $_SESSION['user_id'];
-$admin_data = [];
+$user_data = [];
 
 try {
     $query = "SELECT * FROM users WHERE id = ?";
@@ -18,15 +18,15 @@ try {
     mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $admin_data = mysqli_fetch_assoc($result);
+    $user_data = mysqli_fetch_assoc($result);
     mysqli_stmt_close($stmt);
 } catch (Exception $e) {
-    error_log("Error fetching admin data: " . $e->getMessage());
+    error_log("Error fetching user data: " . $e->getMessage());
 }
 
 // Jika tidak ada data, gunakan data session
-if (!$admin_data) {
-    $admin_data = [
+if (!$user_data) {
+    $user_data = [
         'username' => $_SESSION['username'],
         'email' => $_SESSION['email'] ?? '',
         'nama_lengkap' => $_SESSION['username'],
@@ -45,13 +45,14 @@ $active_form = $_GET['form'] ?? '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Admin - Bagian Kesra</title>
-    <link rel="stylesheet" href="../css/dashboard-admin.css">
+    <title>Profil Saya - Bagian Kesra</title>
+    <link rel="stylesheet" href="../css/dashboard-user.css">
     <link rel="shortcut icon" href="../img/kesra.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/dashboard-user.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <div class="dashboard-container">
@@ -90,7 +91,7 @@ $active_form = $_GET['form'] ?? '';
 
                 <div class="section-header">
                     <h2>Informasi Profil</h2>
-                    <p>Detail informasi akun administrator sistem</p>
+                    <p>Detail informasi akun pribadi Anda</p>
                 </div>
 
                 <!-- Tampilan Profil (Default) -->
@@ -98,18 +99,15 @@ $active_form = $_GET['form'] ?? '';
                 <div class="profile-card">
                     <div class="profile-header-card">
                         <div class="profile-identity">
-                            <div class="profile-avatar admin-avatar">
-                                <i class="fas fa-user-shield"></i>
-                                <div class="admin-badge">
-                                    <i class="fas fa-star"></i>
-                                </div>
+                            <div class="profile-avatar user-avatar">
+                                <i class="fas fa-user-circle"></i>
                             </div>
                             <div class="profile-info">
-                                <h3><?php echo htmlspecialchars($admin_data['nama_lengkap']); ?></h3>
-                                <p class="profile-email"><?php echo htmlspecialchars($admin_data['email']); ?></p>
-                                <div class="profile-role">
-                                    <i class="fas fa-user-tie"></i>
-                                    <span><?php echo ucfirst($admin_data['role']); ?></span>
+                                <h3><?php echo htmlspecialchars($user_data['nama_lengkap'] ?: $user_data['username']); ?></h3>
+                                <p class="profile-email"><?php echo htmlspecialchars($user_data['email']); ?></p>
+                                <div class="profile-role user-role">
+                                    <i class="fas fa-user"></i>
+                                    <span>User</span>
                                 </div>
                             </div>
                         </div>
@@ -120,16 +118,7 @@ $active_form = $_GET['form'] ?? '';
                                 </div>
                                 <div class="stat-info">
                                     <span class="stat-label">Bergabung</span>
-                                    <span class="stat-value"><?php echo date('d M Y', strtotime($admin_data['tanggal_bergabung'])); ?></span>
-                                </div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="stat-info">
-                                    <span class="stat-label">Login Terakhir</span>
-                                    <span class="stat-value"><?php echo date('d M Y H:i', strtotime($admin_data['last_login'])); ?></span>
+                                    <span class="stat-value"><?php echo date('d M Y', strtotime($user_data['created_at'])); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +128,7 @@ $active_form = $_GET['form'] ?? '';
                         <div class="detail-section">
                             <h4 class="section-title">
                                 <i class="fas fa-id-card"></i>
-                                Informasi Pribadi
+                                Informasi Akun
                             </h4>
                             <div class="detail-item">
                                 <div class="detail-icon">
@@ -147,7 +136,7 @@ $active_form = $_GET['form'] ?? '';
                                 </div>
                                 <div class="detail-content">
                                     <label>Username</label>
-                                    <span><?php echo htmlspecialchars($admin_data['username']); ?></span>
+                                    <span><?php echo htmlspecialchars($user_data['username']); ?></span>
                                 </div>
                             </div>
                             <div class="detail-item">
@@ -156,16 +145,16 @@ $active_form = $_GET['form'] ?? '';
                                 </div>
                                 <div class="detail-content">
                                     <label>Email</label>
-                                    <span><?php echo htmlspecialchars($admin_data['email']); ?></span>
+                                    <span><?php echo htmlspecialchars($user_data['email']); ?></span>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-icon">
-                                    <i class="fas fa-signature"></i>
+                                    <i class="fas fa-user-tag"></i>
                                 </div>
                                 <div class="detail-content">
-                                    <label>Nama Lengkap</label>
-                                    <span><?php echo htmlspecialchars($admin_data['nama_lengkap']); ?></span>
+                                    <label>Role</label>
+                                    <span>User</span>
                                 </div>
                             </div>
                         </div>
@@ -173,15 +162,24 @@ $active_form = $_GET['form'] ?? '';
                         <div class="detail-section">
                             <h4 class="section-title">
                                 <i class="fas fa-address-book"></i>
-                                Kontak & Alamat
+                                Informasi Pribadi
                             </h4>
+                            <div class="detail-item">
+                                <div class="detail-icon">
+                                    <i class="fas fa-signature"></i>
+                                </div>
+                                <div class="detail-content">
+                                    <label>Nama Lengkap</label>
+                                    <span><?php echo htmlspecialchars($user_data['nama_lengkap'] ?: '-'); ?></span>
+                                </div>
+                            </div>
                             <div class="detail-item">
                                 <div class="detail-icon">
                                     <i class="fas fa-phone"></i>
                                 </div>
                                 <div class="detail-content">
                                     <label>Nomor Telepon</label>
-                                    <span><?php echo htmlspecialchars($admin_data['telepon'] ?: '-'); ?></span>
+                                    <span><?php echo htmlspecialchars($user_data['telepon'] ?: '-'); ?></span>
                                 </div>
                             </div>
                             <div class="detail-item">
@@ -190,7 +188,7 @@ $active_form = $_GET['form'] ?? '';
                                 </div>
                                 <div class="detail-content">
                                     <label>Alamat</label>
-                                    <span><?php echo htmlspecialchars($admin_data['alamat'] ?: '-'); ?></span>
+                                    <span><?php echo htmlspecialchars($user_data['alamat'] ?: '-'); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +213,7 @@ $active_form = $_GET['form'] ?? '';
                     <div class="form-header">
                         <div class="form-title">
                             <i class="fas fa-edit"></i>
-                            <h3>Edit Profil Admin</h3>
+                            <h3>Edit Profil</h3>
                         </div>
                         <a href="?" class="btn btn-outline btn-back">
                             <i class="fas fa-arrow-left"></i> Kembali ke Profil
@@ -233,14 +231,14 @@ $active_form = $_GET['form'] ?? '';
                                         <i class="fas fa-user"></i>
                                         Username
                                     </label>
-                                    <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($admin_data['username']); ?>" required class="form-input">
+                                    <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user_data['username']); ?>" required class="form-input">
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="form-label">
                                         <i class="fas fa-envelope"></i>
                                         Email
                                     </label>
-                                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($admin_data['email']); ?>" required class="form-input">
+                                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_data['email']); ?>" required class="form-input">
                                 </div>
                             </div>
                             
@@ -251,14 +249,14 @@ $active_form = $_GET['form'] ?? '';
                                         <i class="fas fa-signature"></i>
                                         Nama Lengkap
                                     </label>
-                                    <input type="text" id="nama_lengkap" name="nama_lengkap" value="<?php echo htmlspecialchars($admin_data['nama_lengkap']); ?>" required class="form-input">
+                                    <input type="text" id="nama_lengkap" name="nama_lengkap" value="<?php echo htmlspecialchars($user_data['nama_lengkap']); ?>" class="form-input">
                                 </div>
                                 <div class="form-group">
                                     <label for="telepon" class="form-label">
                                         <i class="fas fa-phone"></i>
                                         Nomor Telepon
                                     </label>
-                                    <input type="text" id="telepon" name="telepon" value="<?php echo htmlspecialchars($admin_data['telepon']); ?>" class="form-input">
+                                    <input type="text" id="telepon" name="telepon" value="<?php echo htmlspecialchars($user_data['telepon']); ?>" class="form-input">
                                 </div>
                             </div>
                         </div>
@@ -268,7 +266,7 @@ $active_form = $_GET['form'] ?? '';
                                 <i class="fas fa-map-marker-alt"></i>
                                 Alamat
                             </label>
-                            <textarea id="alamat" name="alamat" rows="3" class="form-textarea"><?php echo htmlspecialchars($admin_data['alamat']); ?></textarea>
+                            <textarea id="alamat" name="alamat" rows="3" class="form-textarea"><?php echo htmlspecialchars($user_data['alamat']); ?></textarea>
                         </div>
                         
                         <div class="form-actions">
@@ -342,7 +340,7 @@ $active_form = $_GET['form'] ?? '';
         </main>
     </div>
 
-    <script src="../js/dashboard-admin.js"></script>
+    <script src="../js/dashboard-user.js"></script>
     <script>
         // Form validation
         document.addEventListener('DOMContentLoaded', function() {
@@ -356,7 +354,7 @@ $active_form = $_GET['form'] ?? '';
                         e.preventDefault();
                         Swal.fire({
                             icon: 'error',
-                            title: 'Error!',
+                            title: 'Error',
                             text: 'Password baru dan konfirmasi password tidak cocok'
                         });
                     }
@@ -368,14 +366,13 @@ $active_form = $_GET['form'] ?? '';
                 profileForm.addEventListener('submit', function(e) {
                     const username = document.getElementById('username').value;
                     const email = document.getElementById('email').value;
-                    const nama_lengkap = document.getElementById('nama_lengkap').value;
                     
-                    if (!username || !email || !nama_lengkap) {
+                    if (!username || !email) {
                         e.preventDefault();
                         Swal.fire({
                             icon: 'error',
-                            title: 'Error!',
-                            text: 'Field username, email, dan nama lengkap harus diisi'
+                            title: 'Error',
+                            text: 'Field username dan email harus diisi'
                         });
                     }
                 });
@@ -386,7 +383,7 @@ $active_form = $_GET['form'] ?? '';
     <style>
         /* Header Styles */
         .content-header {
-            background: #10B981;;
+            background: #10B981;
             color: white;
             padding: 1.5rem 2rem;
             border-radius: 12px;
@@ -458,8 +455,13 @@ $active_form = $_GET['form'] ?? '';
             font-weight: 500;
         }
 
+        .user-role-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
         .badge-icon {
-            color: #FFD700;
+            color: #c6f6d5;
         }
 
         .mobile-toggle {
@@ -496,7 +498,7 @@ $active_form = $_GET['form'] ?? '';
             gap: 1.5rem;
         }
 
-        .profile-avatar.admin-avatar {
+        .profile-avatar.user-avatar {
             position: relative;
             width: 100px;
             height: 100px;
@@ -507,22 +509,6 @@ $active_form = $_GET['form'] ?? '';
             justify-content: center;
             font-size: 2.5rem;
             color: white;
-        }
-
-        .admin-badge {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: #FFD700;
-            color: #000;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            border: 3px solid white;
         }
 
         .profile-info h3 {
@@ -541,12 +527,15 @@ $active_form = $_GET['form'] ?? '';
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: #ffeaa7;
-            color: #e17055;
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-weight: 600;
             font-size: 0.85rem;
+        }
+
+        .user-role {
+            background: #bee3f8;
+            color: #2c5282;
         }
 
         .profile-stats {
@@ -681,7 +670,7 @@ $active_form = $_GET['form'] ?? '';
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
         }
 
         .btn-secondary {
@@ -791,7 +780,7 @@ $active_form = $_GET['form'] ?? '';
         .form-input:focus, .form-textarea:focus {
             outline: none;
             border-color: #10B981;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
             transform: translateY(-1px);
         }
 
