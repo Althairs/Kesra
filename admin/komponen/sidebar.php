@@ -15,7 +15,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             <i class="fas fa-bars"></i>
         </button>
     </div>
-    
+
     <nav class="sidebar-nav">
         <ul>
             <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">
@@ -48,9 +48,32 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                     <span>Profile</span>
                 </a>
             </li>
+            <!-- Tambahkan link notifikasi sebelum logout -->
+            <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'notifications.php' ? 'active' : ''; ?>">
+                <a href="notifications.php" class="nav-link">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifikasi</span>
+                    <?php
+                    require_once __DIR__ . '/../../koneksi.php';
+                    if (isset($_SESSION['user_id'])) {
+                        $user_id = $_SESSION['user_id'];
+                        $stmt = $koneksi->prepare("SELECT COUNT(*) as unread_count FROM notifications WHERE user_id = ? AND is_read = 0");
+                        $stmt->bind_param("i", $user_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $data = $result->fetch_assoc();
+                        $unread_count = $data['unread_count'] ?? 0;
+                        $stmt->close();
+
+                        if ($unread_count > 0): ?>
+                            <span class="notification-badge"><?php echo $unread_count > 99 ? '99+' : $unread_count; ?></span>
+                        <?php endif;
+                    } ?>
+                </a>
+            </li>
         </ul>
     </nav>
-    
+
     <div class="sidebar-footer">
         <a href="../controller/login-controller.php?logout=true" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
